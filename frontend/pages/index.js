@@ -1,33 +1,49 @@
 import React from "react"
 import Articles from "../components/articles"
+import ArticleGroup from "../components/article_group"
 import Layout from "../components/layout"
+import MixArticles from "../components/mix_articles"
+import RecentArticles from "../components/recent_articles"
+import Search from "../components/search"
 import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
 
-const Home = ({ articles, categories, homepage }) => {
+const Home = ({ articles, categories, articleByCategory }) => {
+
   return (
     <Layout categories={categories}>
-      <Seo seo={homepage.attributes.seo} />
-      <div className="uk-section">
-        <div className="uk-container uk-container-large">
-          <h1>{homepage.attributes.hero.title}</h1>
-          <Articles articles={articles} />
-        </div>
-      </div>
+
+      <RecentArticles articles={articles}/> 
+      <MixArticles category={"All"} articles={articles} />
+      {
+        articleByCategory.map(category => {
+          return <Articles 
+                  key={category.slug} 
+                  category={category.attributes.name} 
+                  articles={category.attributes.articles.data.slice(0,3)} />
+        })
+      }
     </Layout>
   )
 }
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI("/articles", { populate: "*" }),
-    fetchAPI("/categories", { populate: "*" }),
-    fetchAPI("/homepage", {
+  const [articlesRes, categoriesRes, articleByCategoryRes,] = await Promise.all([
+    fetchAPI("/articles", {
+      populate: ["image"],
+      fields: ['title', 'slug']
+    }),
+    fetchAPI("/categories"),
+    fetchAPI("/categories", {
       populate: {
-        hero: "*",
-        seo: { populate: "*" },
+        articles: {
+          populate: 'image',
+          fields: ['title', 'slug'],
+          sort: ['id:desc']
+        }
       },
+      select: ['title', 'slug']
     }),
   ])
 
@@ -35,9 +51,10 @@ export async function getStaticProps() {
     props: {
       articles: articlesRes.data,
       categories: categoriesRes.data,
-      homepage: homepageRes.data,
+      articleByCategory: articleByCategoryRes.data
     },
-    revalidate: 1,
+    revalidate: 1
+    // revalidate: 1,
   }
 }
 

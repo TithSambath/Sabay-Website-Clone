@@ -26,8 +26,13 @@ class MyDocument extends Document {
             async
             src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js"
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Bayon&family=Koulen&display=swap" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@700&display=swap" rel="stylesheet"></link>
         </Head>
-        <body>
+        <body className="bg-F6F6F6">
           <Main />
           <NextScript />
         </body>
