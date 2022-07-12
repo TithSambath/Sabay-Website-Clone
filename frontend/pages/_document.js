@@ -35,6 +35,7 @@ class MyDocument extends Document {
         <body className="bg-F6F6F6">
           <Main />
           <NextScript />
+          <script src="https://kit.fontawesome.com/3b4240d914.js" crossorigin="anonymous"></script>
         </body>
       </Html>
     )

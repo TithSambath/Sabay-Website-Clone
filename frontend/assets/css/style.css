@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+iframe {
+  width: 100%;
+}
+
 .articles {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .card-body {

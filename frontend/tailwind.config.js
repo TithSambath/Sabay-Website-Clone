@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important:true,
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -22,10 +23,23 @@ module.exports = {
       backgroundImage: {
         'preview-image': 'url(http://localhost:1339/uploads/we_love_pizza_9d0ae16840.jpg)'
       },
+      backgroundSize: {
+        '100%': '100%'
+      },
       width: {
         '1170px': '1170px',
         '970px': '970px',
-        '750px': '750px'
+        '750px': '750px',
+        '815px': '815px',
+        '250px': '250px',
+        '300px': '300px',
+        '390px': '390px',
+        '615px': '615px',
+        '395px': '395px',
+        '500px': '500px'
+      },
+      height: {
+        '300px': '300px'
       },
       minWidth: {
         '160px': '160px',
@@ -35,18 +49,21 @@ module.exports = {
         '350px': '350px',
         '300px': '300px',
         '320px': '320px',
+        '395px': '395px',
         '1170px': '1170px',
         '200px': '200px',
         '250px': '250px',
         '180px': '180px',
-        '160px': '160px',
+        '150px': '150px',
       },
       maxWidth: {
         '400px': '400px',
         '450px': '450px',
+        '395px': '395px',
         '350px': '350px',
         '300px': '300px',
         '320px': '320px',
+        '815px': '815px',
         '1170px': '1170px'
       },
       minHeight: {

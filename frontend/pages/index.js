@@ -1,11 +1,8 @@
 import React from "react"
 import Articles from "../components/articles"
-import ArticleGroup from "../components/article_group"
 import Layout from "../components/layout"
 import MixArticles from "../components/mix_articles"
 import RecentArticles from "../components/recent_articles"
-import Search from "../components/search"
-import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
 
 const Home = ({ articles, categories, articleByCategory }) => {

@@ -3,14 +3,14 @@ import ArticleSM from "./articles_sm";
 import ArticleGroup from "./article_group";
 import Card from "./card"
 
-export default function MixArticles({ category, articles }) {
+export default function MixArticles({ articles }) {
     const recentArticles = articles.slice(0, 3);
     const lastArticles = articles.slice(3, articles.length + 1)
 
     if (articles.length == 0) return null;
 
     return (
-        <ArticleGroup groupCategory={"ALL"}>
+        <ArticleGroup groupCategory={"ALL"} classes="pl-5 pr-5 md:w-750px lg:w-970px xl:w-1170px mt-10">
             <div className=" 
                 recent-article
                 hidden
